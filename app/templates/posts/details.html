@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Post Details{% endblock %}
+
+{% block content %}
+<h1>Post Details</h1><br>
+<div class="card" style="width: 18rem;">
+    <img src="{{post.image_url}}" class="card-img-top" alt="{{post.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{post.name}}</h5>
+      <p class="card-text">{{post.description}}</p>
+      <p class="card-text">Creator:<a href="{{post.creator.show_url}}">{{post.creator.name}} </a> </p>
+      <a href="{{ url_for('posts.index')}}" class="btn btn-primary">Go To Posts</a>
+      <form action="{{post.delete_url}}" method="post">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
+      <a href="{{post.edit_url}}" class="btn btn-warning"> Edit </a>
+    </div>
+  </div>
+{% endblock %}

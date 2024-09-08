@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}All creators{% endblock %}
+
+{% block content %}
+<h1>All creators</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for creator in creators %}
+        <tr>
+            <td>{{creator.id}}</td>
+            <td>{{creator.name}}</td>
+            <td><a href="{{creator.show_url}}" class="btn btn-info"> Show </a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{url_for('creators.create')}}" class="btn btn-success">Add New creator</a>
+
+{% endblock %}

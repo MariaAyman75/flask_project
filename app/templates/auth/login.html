@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+<h1>Login</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ render_form(form) }}
+</form>
+<a href="{{ url_for('auth.register') }}" class="btn btn-success">Register</a>
+
+{% endblock %}

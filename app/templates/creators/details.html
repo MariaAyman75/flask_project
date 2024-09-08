@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+    <h1> Creator Info </h1>
+<div class="card" style="width: 18rem;">
+
+  <div class="card-body">
+    <h5 class="card-title">{{creator.name}}</h5>
+    <a href="{{ url_for('creators.index')}}" class="btn btn-primary">Back to all creators</a>
+  </div>
+</div>
+
+<h1> Posts by this creator</h1>
+    {% for post in  creator.posts %}
+        <li> <a href="{{post.show_url}}"> {{post.name}}</a> </li>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+<h1>All Posts</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Creator</th>
+            <th>Details</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{post.id}}</td>
+            <td>{{post.name}}</td>
+            <td>{{post.description}}</td>
+            <td><img src="{{post.image_url}}" alt="{{post.name}}" width="100px" height="100px"></td>
+            <td>{{post.creator.name}}</td>
+            <td><a href="{{post.show_url}}" class="btn btn-info"> Show </a></td>
+            <td><form action="{{post.delete_url}}" method="post">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form></td>
+            
+            <td><a href="{{post.edit_url}}" class="btn btn-warning"> Edit </a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{url_for('posts.create')}}" class="btn btn-success">Create New Post</a>
+<a href="{{url_for('creators.index')}}" class="btn btn-success">Go to creators</a>
+
+{% endblock %}
